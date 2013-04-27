@@ -34,7 +34,7 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
  
 // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
  
- info += "    <li><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>";
+ info += '<li><img src="http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "/">'+ hotelSummary[i]["address1"] + '</li>';
 
  
  document.getElementById("result").innerHTML = info 

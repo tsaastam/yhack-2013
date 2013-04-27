@@ -84,9 +84,11 @@ function codeAddress() {
 
     var weatherH = document.getElementById('weatherH');
     var hotelsH = document.getElementById('hotelsH');
+    var flickrH = document.getElementById('flickrH');
 
     weatherH.innerHTML = " ";
     hotelsH.innerHTML = " ";
+    flickrH.innerHTML = " ";
 
     window.scrollTo(0, 0);
   });
@@ -100,9 +102,11 @@ function manageWeatherClick(smallPopup) {
 
   var weatherH = document.getElementById('weatherH');
   var hotelsH = document.getElementById('hotelsH');
-
+  var flickrH = document.getElementById('flickrH');
+ 
   weatherH.innerHTML = " <h1>The Weather</h1> ";
   hotelsH.innerHTML = " <h1>The Hotels</h1> ";
+  flickrH.innerHTML = " <h1>Related Pictures from Flickr</h1> "
 
   window.location.href = '#weatherH';
 
@@ -113,6 +117,7 @@ function manageWeatherClick(smallPopup) {
   // We shall do something with this
   //alert(locationName + " -> " + countryName);
   foo(locationName, countryName);
+  flickrData(locationName, countryName);
 
 }
 

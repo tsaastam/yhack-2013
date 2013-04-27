@@ -11,7 +11,6 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
     "&currencyCode=GBP"+
     "&city="+city+
     "&countryCode="+ccode+
-	"&stateProvinceCode=''"+
     "&supplierCacheTolerance=MED_ENHANCED"+
     "&arrivalDate=04/27/2013"+
     "&departureDate=04/31/2013"+
@@ -24,15 +23,33 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
   function getHotelInfo(resp) {
     console.log(resp);
     var info = ''
-    for(hotelData in resp["HotelListResponse"]["HotelList"]["HotelSummary"][0] ){
-      info += '<ul>' + hotelData["address1"] + '</ul>' + '<br>'
+    
+    
+    var hotelSummary = resp["HotelListResponse"]["HotelList"]["HotelSummary"];
+    var maxIter = hotelSummary.length;
+
+    for(var i =0; i<maxIter; i++ ) { 
+   //  info += hotelSummary[i]["address1"]; 
+ 
+ 
+// info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
+ 
+ info += "    <li><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>";
+
+ 
+ document.getElementById("result").innerHTML = info 
+    }
+    
+    
+   // for(hotelData in resp["HotelListResponse"]["HotelList"]["HotelSummary"] ){
+   //   info += '<ul>' + hotelData["address1"] + '</ul>  <br>';
       //console.log(hotelData);
       //console.log(hotelData["address1"]);
       
-   document.getElementById("result").innerHTML = info 
+ //  document.getElementById("result").innerHTML = info 
    //hotelData["address1"];
       
-    }
+//    }
     console.log(resp["HotelListResponse"])
     console.log(resp["HotelListResponse"]["HotelList"])
     console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"])

@@ -3,90 +3,10 @@
     <head>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
-            <style type="text/css">
-                html, body {
-                  height: 100%;
-                  margin: 0;
-                  padding: 0;
-                }
-
-                #map-canvas, #map_canvas {
-                  height: 100%;
-                }
-
-                @media print {
-                  html, body {
-                    height: auto;
-                  }
-
-                  #map_canvas {
-                    height: 650px;
-                  }
-                }
-
-                #panel {
-                  position: absolute;
-                  top: 5px;
-                  left: 50%;
-                  margin-left: -180px;
-                  z-index: 5;
-                  background-color: #fff;
-                  padding: 5px;
-                  border: 1px solid #999;
-                }
-            </style>
-            <title>Weather layer</title>
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=KEY_VALUE&sensor=false&libraries=weather"></script>
-            <script>
-                var map;
-                var geocoder;
-                
-                //var myLocation = "London, UK";
-                
-                function initialize() {
-                    
-                    var mapOptions = {
-                        zoom: 6,
-                        center: new google.maps.LatLng(51.511,-0.118),
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    
-                    map = new google.maps.Map(document.getElementById('map-canvas'),
-                                                  mapOptions);
-                    
-                    var weatherLayer = new google.maps.weather.WeatherLayer({
-                                                                            temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS
-                                                                            });
-                    
-                    weatherLayer.setMap(map);
-                    
-                    /*var cloudLayer = new google.maps.weather.CloudLayer();
-                     cloudLayer.setMap(map);*/
-                    
-                    geocoder = new google.maps.Geocoder();
-                }
-                
-                function codeAddress() {
-                  var address = document.getElementById('address').value;
-
-                  geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                      map.setCenter(results[0].geometry.location);
-                      map.setZoom(9);  // I like 9-10 but play around and see what you like
-                      var marker = new google.maps.Marker({
-                          map: map,
-                          position: results[0].geometry.location
-                      });
-                    } else {
-                      alert('Geocode was not successful for the following reason: ' + status);
-                    }
-                  });
-                }
-                
-                google.maps.event.addDomListener(window, 'load', initialize);
-                
-                
-            </script>
+            <title>Sun Holiday Planner</title>
+            <LINK href="sun_holiday_planner.css" rel="stylesheet" type="text/css">
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=KEY_HERE&sensor=false&libraries=weather"></script>
+            <script src="sun_holiday_planner.js"></script>
         </head>
     <body>
         <div id="panel">
@@ -94,5 +14,6 @@
             <input type="button" value="Geocode" onclick="codeAddress()">
         </div>
         <div id="map-canvas"></div>
+        <div id="meteo-forecast"></div>
     </body>
 </html>

@@ -77,7 +77,7 @@ function codeAddress() {
     }
 
     var meteoForecast = document.getElementById('meteo-forecast');
-    meteoForecast.innerHTML = "<h2>Click on a weather icon to reload the data</h2>";
+    meteoForecast.innerHTML = "<span id='workaround'>Click on a weather icon to reload the data</span>";
 
     var resultDiv = document.getElementById('result');
     resultDiv.innerHTML = " ";

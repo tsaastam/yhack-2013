@@ -25,6 +25,16 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
 
   function foffo(resp) {
     console.log(resp);
+    for(property in resp) {
+      console.log(property)
+    }
+    console.log(resp["HotelListResponse"])
+    console.log(resp["HotelListResponse"]["HotelList"])
+    console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"])
+    console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0])
+    console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"])
+    var firstHotelAddr = resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"];
+    document.getElementById("result").innerHTML = "first hotel address: "+firstHotelAddr
   }
 
   Y.jsonp(url, foffo);
@@ -36,7 +46,7 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
 
 <body>
 
-See Chrome's JavaScript console for result
+<div id="result"></div>
 
 </body>
 

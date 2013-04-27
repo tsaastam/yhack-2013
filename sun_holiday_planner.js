@@ -87,6 +87,8 @@ function codeAddress() {
 
     weatherH.innerHTML = " ";
     hotelsH.innerHTML = " ";
+
+    window.scrollTo(0, 0);
   });
 }
 
@@ -101,6 +103,8 @@ function manageWeatherClick(smallPopup) {
 
   weatherH.innerHTML = " <h1>The Weather</h1> ";
   hotelsH.innerHTML = " <h1>The Hotels</h1> ";
+
+  window.location.href = '#weatherH';
 
   // Then collect location and country name!
   var locationName = smallPopup.featureDetails.location.split(',')[0].trim();

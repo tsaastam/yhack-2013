@@ -36,7 +36,7 @@
                 }
             </style>
             <title>Weather layer</title>
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=KEY_HERE&sensor=false&libraries=weather"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=KEY_VALUE&sensor=false&libraries=weather"></script>
             <script>
                 var map;
                 var geocoder;
@@ -72,6 +72,7 @@
                   geocoder.geocode( { 'address': address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                       map.setCenter(results[0].geometry.location);
+                      map.setZoom(9);  // I like 9-10 but play around and see what you like
                       var marker = new google.maps.Marker({
                           map: map,
                           position: results[0].geometry.location

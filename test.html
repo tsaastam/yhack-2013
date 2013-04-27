@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
             <style type="text/css">
                 html, body {
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
+                  height: 100%;
+                  margin: 0;
+                  padding: 0;
                 }
-                
+
                 #map-canvas, #map_canvas {
-                    height: 100%;
+                  height: 100%;
                 }
-                
+
                 @media print {
-                    html, body {
-                        height: auto;
-                    }
-                    
-                    #map_canvas {
-                        height: 650px;
-                    }
+                  html, body {
+                    height: auto;
+                  }
+
+                  #map_canvas {
+                    height: 650px;
+                  }
                 }
-                
+
                 #panel {
-                    position: absolute;
-                    top: 5px;
-                    left: 50%;
-                    margin-left: -180px;
-                    z-index: 5;
-                    background-color: #fff;
-                    padding: 5px;
-                    border: 1px solid #999;
+                  position: absolute;
+                  top: 5px;
+                  left: 50%;
+                  margin-left: -180px;
+                  z-index: 5;
+                  background-color: #fff;
+                  padding: 5px;
+                  border: 1px solid #999;
                 }
-                </style>
+            </style>
             <title>Weather layer</title>
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=KEY_GOES_HERE&sensor=false&libraries=weather"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=KEY_HERE&sensor=false&libraries=weather"></script>
             <script>
                 var map;
                 var geocoder;
                 
-                var myLocation = "London, UK";
+                //var myLocation = "London, UK";
                 
                 function initialize() {
                     
                     var mapOptions = {
                         zoom: 6,
-                        center: new google.maps.LatLng(49.265984,-123.127491),
+                        center: new google.maps.LatLng(51.511,-0.118),
                         mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
                     
-                    var map = new google.maps.Map(document.getElementById('map-canvas'),
+                    map = new google.maps.Map(document.getElementById('map-canvas'),
                                                   mapOptions);
                     
                     var weatherLayer = new google.maps.weather.WeatherLayer({
@@ -63,30 +64,34 @@
                      cloudLayer.setMap(map);*/
                     
                     geocoder = new google.maps.Geocoder();
-                    geocoder.geocode( { 'address': myLocation}, function(results, status) {
-                                     if (status == google.maps.GeocoderStatus.OK) {
-                                     map.setCenter(results[0].geometry.location);
-                                     
-                                     var marker = new google.maps.Marker({
-                                                                         map: map,
-                                                                         position: results[0].geometry.location
-                                                                         }); 
-                                     } else {
-                                     alert('Geocode was not successful for the following reason: ' + status);
-                                     }
-                                     });
                 }
                 
-                
-                
-                
+                function codeAddress() {
+                  var address = document.getElementById('address').value;
+
+                  geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                      map.setCenter(results[0].geometry.location);
+                      var marker = new google.maps.Marker({
+                          map: map,
+                          position: results[0].geometry.location
+                      });
+                    } else {
+                      alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                  });
+                }
                 
                 google.maps.event.addDomListener(window, 'load', initialize);
                 
                 
-                </script>
-            </head>
+            </script>
+        </head>
     <body>
+        <div id="panel">
+            <input id="address" type="textbox" value="London, UK">
+            <input type="button" value="Geocode" onclick="codeAddress()">
+        </div>
         <div id="map-canvas"></div>
     </body>
 </html>

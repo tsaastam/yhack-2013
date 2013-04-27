@@ -1,9 +1,12 @@
+
+var foo = null
+
 YUI().use('jsonp', 'jsonp-url', function (Y) {
   function getExpediaUrl(city, ccode) {
     var url =
     "http://api.ean.com/ean-services/rs/hotel/v3/list?minorRev=22"+
     "&cid=55505"+
-    "&apiKey=<INSERT_API_KEY_HERE>"+
+    "&apiKey=h6p3b3ewhjued3ks2uyvc884"+
     "&locale=en_US"+
     "&currencyCode=GBP"+
     "&city="+city+
@@ -30,7 +33,12 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
     var firstHotelAddr = resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"];
     document.getElementById("result").innerHTML = "first hotel address: "+firstHotelAddr
   }
+  
+  foo = function(city, ccode) {
+    Y.jsonp(getExpediaUrl(city, ccode), getHotelInfo);
+	}
 
-  Y.jsonp(getExpediaUrl(city, ccode), getHotelInfo);
+}
 
-});
+
+);

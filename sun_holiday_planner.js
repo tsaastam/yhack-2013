@@ -89,7 +89,9 @@ function manageWeatherClick(smallPopup) {
   var countryName = smallPopup.featureDetails.location.split(',')[1].trim();
 
   // We shall do something with this
-  alert(locationName + " -> " + countryName);
+  //alert(locationName + " -> " + countryName);
+  alert(foo(locationName, 'UK'));
+
 }
 
 // Initialise the map on load

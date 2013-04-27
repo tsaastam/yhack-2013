@@ -90,7 +90,7 @@ function manageWeatherClick(smallPopup) {
 
   // We shall do something with this
   //alert(locationName + " -> " + countryName);
-  alert(foo(locationName, 'UK'));
+  foo(locationName, countryName);
 
 }
 

@@ -22,8 +22,15 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
   
   function getHotelInfo(resp) {
     console.log(resp);
-    for(property in resp) {
-      console.log(property)
+    var info = ''
+    for(hotelData in resp["HotelListResponse"]["HotelList"]["HotelSummary"][0] ){
+      info += '<ul>' + hotelData["address1"] + '</ul>' + '<br>'
+      //console.log(hotelData);
+      //console.log(hotelData["address1"]);
+      
+   document.getElementById("result").innerHTML = info 
+   //hotelData["address1"];
+      
     }
     console.log(resp["HotelListResponse"])
     console.log(resp["HotelListResponse"]["HotelList"])
@@ -31,7 +38,19 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
     console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0])
     console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"])
     var firstHotelAddr = resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"];
-    document.getElementById("result").innerHTML = "first hotel address: "+firstHotelAddr
+   
+   
+     //<div class="row show-grid">
+      //        <div title="" data-original-title="" class="span4">4</div>
+    //          <div class="span5">5</div>
+  //          </div>
+   
+   // document.getElementById("result").innerHTML = "first hotel address: "+firstHotelAddr;
+   
+ //  document.getElementById("result").innerHTML = " <div class=\"row show-grid\"> "+firstHotelAddr 
+
+    
+    alert(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]);
   }
   
   foo = function(city, ccode) {

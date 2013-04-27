@@ -85,7 +85,11 @@ function codeAddress() {
     var weatherH = document.getElementById('weatherH');
     var hotelsH = document.getElementById('hotelsH');
     var flickrH = document.getElementById('flickrH');
-
+    
+    
+    document.getElementById('textWE').style.visibility='visible';
+  document.getElementById('textHO').style.visibility='visible';
+    document.getElementById('textFL').style.visibility='visible';
     weatherH.innerHTML = " ";
     hotelsH.innerHTML = " ";
     flickrH.innerHTML = " ";

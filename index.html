@@ -1,22 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
+       <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+  
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
         <meta charset="utf-8">
             <title>Sun Holiday Planner</title>
             <LINK href="sun_holiday_planner.css" rel="stylesheet" type="text/css">
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&key=AIzaSyDsazMxF4IzjMk5eE8D1LqA3PnsUmGHy6I&sensor=false&libraries=weather"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false&libraries=weather"></script>
             <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
             <script src="sun_holiday_planner.js"></script>
                 <script src="expedia.js"></script>
+                 <style type="text/css">
+  #map-canvas img {
+  max-width: none;
+}
+
+ </style>
         </head>
-    <body>
-        <div id="panel">
+      <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+
+  
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Yahoo Hacker 2013 Sun Holiday Planner</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+     <div  class="offset1 span10">     <h1>Yahoo Hacker 2013 Sun Holiday Planner</h1>
+      <p>Use the map to catch the sun in you next day off</p>
+</div>
+        <div id="panel"  style="   padding-top: 60px;"  >
             <input id="address" type="textbox" value="London, UK">
             <input type="button" value="Geocode" onclick="codeAddress()">
         </div>
-        <div id="map-canvas"></div>
-        <div id="meteo-forecast"></div>
+        <div id="map-canvas" style="width:100%; height:400px"></div>
+        <div id="meteo-forecast" style="width:100%; height:400px"></div>
         <div id="result"></div>
+         </div>
     </body>
 </html>

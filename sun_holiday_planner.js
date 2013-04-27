@@ -81,6 +81,12 @@ function codeAddress() {
 
     var resultDiv = document.getElementById('result');
     resultDiv.innerHTML = " ";
+
+    var weatherH = document.getElementById('weatherH');
+    var hotelsH = document.getElementById('hotelsH');
+
+    weatherH.innerHTML = " ";
+    hotelsH.innerHTML = " ";
   });
 }
 
@@ -89,6 +95,12 @@ function manageWeatherClick(smallPopup) {
   // First set the weather HTML
   var meteoForecast = document.getElementById('meteo-forecast');
   meteoForecast.innerHTML = smallPopup.infoWindowHtml;
+
+  var weatherH = document.getElementById('weatherH');
+  var hotelsH = document.getElementById('hotelsH');
+
+  weatherH.innerHTML = " <h1>The Weather</h1> ";
+  hotelsH.innerHTML = " <h1>The Hotels</h1> ";
 
   // Then collect location and country name!
   var locationName = smallPopup.featureDetails.location.split(',')[0].trim();

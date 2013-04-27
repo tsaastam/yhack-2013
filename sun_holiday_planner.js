@@ -75,6 +75,12 @@ function codeAddress() {
       // Tell us that there was a problem..
       alert('Geocode was not successful for the following reason: ' + status);
     }
+
+    var meteoForecast = document.getElementById('meteo-forecast');
+    meteoForecast.innerHTML = "<h2>Click on a weather icon to reload the data</h2>";
+
+    var resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = " ";
   });
 }
 

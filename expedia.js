@@ -1,7 +1,6 @@
-
 var foo = null
 
-YUI().use('jsonp', 'jsonp-url', function (Y) {
+YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
   function getExpediaUrl(city, ccode) {
     var url =
     "http://api.ean.com/ean-services/rs/hotel/v3/list?minorRev=22"+
@@ -21,59 +20,48 @@ YUI().use('jsonp', 'jsonp-url', function (Y) {
     }
   
   function getHotelInfo(resp) {
-    console.log(resp);
-    var info = ''
+    //console.log(resp);
+    var info = '';
     
     
     var hotelSummary = resp["HotelListResponse"]["HotelList"]["HotelSummary"];
     var maxIter = hotelSummary.length;
 
     for(var i =0; i<maxIter; i++ ) { 
-   //  info += hotelSummary[i]["address1"]; 
  
- 
-// info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
- 
- info += '<li><img src="http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "/">'+ hotelSummary[i]["address1"] + '</li>';
-
- 
- document.getElementById("result").innerHTML = info 
+      // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
+      info += "    <li><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>\n";
     }
-    
-    
-   // for(hotelData in resp["HotelListResponse"]["HotelList"]["HotelSummary"] ){
-   //   info += '<ul>' + hotelData["address1"] + '</ul>  <br>';
-      //console.log(hotelData);
-      //console.log(hotelData["address1"]);
-      
- //  document.getElementById("result").innerHTML = info 
-   //hotelData["address1"];
-      
-//    }
-    console.log(resp["HotelListResponse"])
-    console.log(resp["HotelListResponse"]["HotelList"])
-    console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"])
-    console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0])
-    console.log(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"])
-    var firstHotelAddr = resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]["address1"];
-   
-   
-     //<div class="row show-grid">
-      //        <div title="" data-original-title="" class="span4">4</div>
-    //          <div class="span5">5</div>
-  //          </div>
-   
-   // document.getElementById("result").innerHTML = "first hotel address: "+firstHotelAddr;
-   
- //  document.getElementById("result").innerHTML = " <div class=\"row show-grid\"> "+firstHotelAddr 
 
-    
-    alert(resp["HotelListResponse"]["HotelList"]["HotelSummary"][0]);
+    document.getElementById("result").innerHTML = info;
   }
   
   foo = function(city, ccode) {
     Y.jsonp(getExpediaUrl(city, ccode), getHotelInfo);
 	}
+
+  function setFlickrData(res) {
+    console.log(res);
+    var pics = res.query.results.photo;
+    var maxIter = pics.length;
+    var info = '';
+
+    for(var i =0; i<maxIter; i++ ) { 
+      info += "    <li><img src='" + pics[i].url_t + "'/></li>\n";
+      // for the actual url is enough: pics[i].url_t.replace("_t","")
+      // otherwise 'http://www.flickr.com/photos/' + pics[i].owner + '/' + pics[i].id
+      // info += "    <li><a href='http://www.flickr.com/photos/" + pics[i].owner + "/" + pics[i].id + "' target='_blank'> <img src='" + pics[i].url_t + "'/></a></li>\n";
+    }
+
+    document.getElementById("resultF").innerHTML = info;
+  }
+
+  flickrData = function(city, ccode) {
+     Y.YQL('select * from flickr.photos.search where (text="' + city +', ' + ccode+ '" and sort="interestingness-desc" and extras="url_t" and api_key="881c7c2901162e2a11efa3980a16553d")', function(res) {
+        setFlickrData(res);
+    
+    });
+  }
 
 }
 

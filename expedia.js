@@ -60,7 +60,10 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
 
     for(var i =0; i<maxIter; i++ ) { 
       //info += '    <div class="flickrContainer" style="background-image: url(\'' + pics[i].url_t.replace('_t','_q') +'\'); height: 200px; width: 200px; background-repeat:no-repeat; background-position:center center; background-size: 150px 150px; overlay: hidden; float:left;"> </div>​\n';
-      info += '    <div style="height: 180px; width: 180px; overlay: hidden; float:left;"><img src="' +  pics[i].url_t.replace('_t','_q') + '" style="width:150px;"></img> </div>​\n';
+      info += '    <div style="height: 180px; width: 180px; overlay: hidden; float:left;">';
+      info += '<a href="http://www.flickr.com/photos/' + pics[i].owner + '/' + pics[i].id +'" target="_blank">';
+      info += '<img src="' +  pics[i].url_t.replace('_t','_q') + '" style="width:150px;"/>';
+      info += '</a></div>​\n';
       // for the actual url is enough: pics[i].url_t.replace("_t","")
       //info += "    <img  width=\"110px\" src='" + pics[i].url_t + "'/>";
       // for the actual url is enough: pics[i].url_t.replace("_t","")

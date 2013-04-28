@@ -31,7 +31,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     for(var i =0; i<maxIter; i++ ) { 
  
       // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
-      info += "    <li><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>\n";
+      info += "    <li ><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>\n";
     }
 
     document.getElementById("result").innerHTML = info;

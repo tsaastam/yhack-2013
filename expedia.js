@@ -11,6 +11,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     "&currencyCode=GBP"+
     "&city="+city+
     "&countryCode="+ccode+
+	"&stateProvinceCode=''"+
     "&supplierCacheTolerance=MED_ENHANCED"+
     "&arrivalDate=04/27/2013"+
     "&departureDate=04/31/2013"+

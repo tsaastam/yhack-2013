@@ -12,7 +12,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     "&city="+city+
     "&countryCode="+ccode+
     "&supplierCacheTolerance=MED_ENHANCED"+
-    "&arrivalDate=04/27/2013"+
+    "&arrivalDate=04/28/2013"+
     "&departureDate=04/31/2013"+
     "&room1=2"+
     "&numberOfResults=10"+
@@ -30,8 +30,13 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
 
     for(var i =0; i<maxIter; i++ ) { 
  
+	  var rating = hotelSummary[i]["name"].replace(".","")
+ 
       // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
-      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><h5>"+ hotelSummary[i]["name"] +"</h5> <img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"><br/></div>"+ hotelSummary[i]["locationDescription"] + "</div></li>\n";
+      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><h5>"+ hotelSummary[i]["name"] +"</h5> <img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"><br/></div>"+ hotelSummary[i]["locationDescription"];
+	  info += "   <span class=\"rating-static rating-" + rating + "></span>";
+	  info += "   </div></li>\n"
+	  console.log(rating)
     }
 
     document.getElementById("result").innerHTML = info;

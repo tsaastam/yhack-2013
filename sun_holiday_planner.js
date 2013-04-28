@@ -94,7 +94,7 @@ function codeAddress() {
     hotelsH.innerHTML = " ";
     flickrH.innerHTML = " ";
 
-    window.scrollTo(0, 0);
+    window.scrollTo(-100, -100);
   });
 }
 
@@ -112,7 +112,8 @@ function manageWeatherClick(smallPopup) {
   hotelsH.innerHTML = " <h1>Hotels by Expedia</h1> ";
   flickrH.innerHTML = " <h1>Loading...</h1> "
 
-  window.location.href = '#weatherH';
+  //window.location.href = '#weatherH';
+  window.scrollTo(250, 250);
 
   // Then collect location and country name!
   var locationName = smallPopup.featureDetails.location.split(',')[0].trim();

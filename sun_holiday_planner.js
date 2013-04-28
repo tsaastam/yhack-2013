@@ -73,7 +73,7 @@ function codeAddress() {
         });
     } else {
       // Tell us that there was a problem..
-      alert('Geocode was not successful for the following reason: ' + status);
+      console.log('Geocode was not successful for the following reason: ' + status);
     }
 
     var meteoForecast = document.getElementById('meteo-forecast');
@@ -88,7 +88,7 @@ function codeAddress() {
     
     
     document.getElementById('textWE').style.visibility='visible';
-  document.getElementById('textHO').style.visibility='visible';
+    document.getElementById('textHO').style.visibility='visible';
     document.getElementById('textFL').style.visibility='visible';
     weatherH.innerHTML = " ";
     hotelsH.innerHTML = " ";

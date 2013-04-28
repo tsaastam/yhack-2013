@@ -52,7 +52,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
 	
 
   function setFlickrData(res,city) {
-    console.log(res);
+    //console.log(res);
     var pics = res.query.results.photo;
     var maxIter = pics.length;
     var info = '<div class=\"span12,offset1\">';

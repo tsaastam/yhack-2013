@@ -109,7 +109,7 @@ function manageWeatherClick(smallPopup) {
   var flickrH = document.getElementById('flickrH');
  
   weatherH.innerHTML = " <h1>Forecast</h1> ";
-  hotelsH.innerHTML = " <h1>The Hotels by Expedia</h1> ";
+  hotelsH.innerHTML = " <h1>Hotels by Expedia</h1> ";
   flickrH.innerHTML = " <h1>Loading...</h1> "
 
   window.location.href = '#weatherH';

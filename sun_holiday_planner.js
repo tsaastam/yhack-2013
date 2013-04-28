@@ -87,13 +87,15 @@ function codeAddress() {
     var flickrH = document.getElementById('flickrH');
     
     
-    document.getElementById('textWE').style.visibility='visible';
-    document.getElementById('textHO').style.visibility='visible';
-    document.getElementById('textFL').style.visibility='visible';
+    // getElementById not working with h1 on some browsers...
+    //document.getElementById('textWE').style.visibility='visible';
+    //document.getElementById('textHO').style.visibility='visible';
+    //document.getElementById('textFL').style.visibility='visible';
     weatherH.innerHTML = " ";
     hotelsH.innerHTML = " ";
     flickrH.innerHTML = " ";
     document.getElementById('resultF').innerHTML = " ";
+    //console.log(document.getElementById('resultF'));
 
     window.scrollTo(-100, -100);
   });

@@ -56,7 +56,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     var pics = res.query.results.photo;
     var maxIter = pics.length;
     var info = '<div class=\"span12,offset1\">';
-     document.getElementById('flickrH').innerHTML = "<h1> YQL Flickr photo from "+ city +  "</h1>"
+     document.getElementById('flickrH').innerHTML = "<h1> Flickr photos from "+ city +  "</h1>"
 
     for(var i =0; i<maxIter; i++ ) { 
       info += "    <img  width=\"110px\" src='" + pics[i].url_t + "'/>";

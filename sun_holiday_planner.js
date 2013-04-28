@@ -134,7 +134,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function maybeSubmit(e)
 {
     if(e && e.keyCode == 13) {
-        console.log("enter pressed in search box -> calling codeAddress()");
+//        console.log("enter pressed in search box -> calling codeAddress()");
         codeAddress();
         return false;
     }

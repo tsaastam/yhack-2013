@@ -34,12 +34,25 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
 	 
  
       // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
-      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><span class=\"rating-static rating-" + rating + "\"></span><a href=\""+ hotelSummary[i]["deepLink"] +"\"<h5>"+ hotelSummary[i]["name"] +"</h5></a> <img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"><br/><br/></div>"+ hotelSummary[i]["locationDescription"];
+      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><span class=\"rating-static rating-" + rating + "\"></span><a target=\"new\" href=\""+ hotelSummary[i]["deepLink"] +"\"<h5>"+ hotelSummary[i]["name"] +"</h5></a> <img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"><br/><br/></div>"+ hotelSummary[i]["locationDescription"];
 	  info += "   ";
 	//  info += "    "+ "<img  height=\"102\" width=\"42\" src=\""+  hotelSummary[i]["tripAdvisorRatingUrl"]   +"\" > </div>"+" </li>\n"
 	 info += "    "+ " </div>"+" </li>\n"
 	
 	  console.log(rating)
+
+     // TODO: need to remove existing markers before adding these new ones
+     // - not sure how to remove them so just commenting this out for now
+//     var lati = hotelSummary[i]["latitude"];
+//     var longi = hotelSummary[i]["longitude"];
+//     console.log(lati);
+//     console.log(longi);
+//     var hotelLatLong = new google.maps.LatLng(lati, longi);
+//     var hotelMarker = new google.maps.Marker({
+//         map: map,
+//         position: hotelLatLong
+//     });
+
     }
 
     document.getElementById("result").innerHTML = info;

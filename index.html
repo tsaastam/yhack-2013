@@ -40,7 +40,9 @@
                 <li class="divider"></li>
             </ul>
          <form class="navbar-search pull-left" action="">
-                      <input id="address" class="search-query span2" placeholder="London, UK" type="text">
+                      <input id="address" class="search-query span2"
+                             placeholder="London, UK" type="text"
+                             onKeyPress="return maybeSubmit(event);">
                         <input type="button" value="Search" onclick="codeAddress()">
                     </form>
           </div><!--/.nav-collapse -->

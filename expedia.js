@@ -72,7 +72,7 @@ info += "</div>";
   }
 
   flickrData = function(city, ccode) {
-     Y.YQL('select * from flickr.photos.search(54) where (text="' + city +', ' + ccode+ '" and sort="interestingness-desc" and extras="url_t" and api_key="881c7c2901162e2a11efa3980a16553d")', function(res) {
+     Y.YQL('select * from flickr.photos.search(30) where (text="' + city +', ' + ccode+ '" and sort="interestingness-desc" and extras="url_t" and api_key="881c7c2901162e2a11efa3980a16553d")', function(res) {
         setFlickrData(res,city);
     
     });

@@ -93,6 +93,7 @@ function codeAddress() {
     weatherH.innerHTML = " ";
     hotelsH.innerHTML = " ";
     flickrH.innerHTML = " ";
+    document.getElementById('resultF').innerHTML = " ";
 
     window.scrollTo(-100, -100);
   });
@@ -111,6 +112,7 @@ function manageWeatherClick(smallPopup) {
   weatherH.innerHTML = " <h1>Forecast</h1> ";
   hotelsH.innerHTML = " <h1>Hotels by Expedia</h1> ";
   flickrH.innerHTML = " <h1>Loading...</h1> "
+  document.getElementById('resultF').innerHTML = " ";
 
   //window.location.href = '#weatherH';
   window.scrollTo(250, 250);

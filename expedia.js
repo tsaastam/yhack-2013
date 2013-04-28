@@ -31,7 +31,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     for(var i =0; i<maxIter; i++ ) { 
  
       // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
-      info += "    <li><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>\n";
+      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><h5>"+ hotelSummary[i]["name"] +"</h5> <img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"><br/></div>"+ hotelSummary[i]["locationDescription"] + "</div></li>\n";
     }
 
     document.getElementById("result").innerHTML = info;
@@ -48,7 +48,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     var info = '';
 
     for(var i =0; i<maxIter; i++ ) { 
-      info += "    <li><img src='" + pics[i].url_t + "'/></li>\n";
+      info += "   <li> <div style=\"padding: 30px;\" ><img src='" + pics[i].url_t + "'/></div></li>\n";
       // for the actual url is enough: pics[i].url_t.replace("_t","")
       // otherwise 'http://www.flickr.com/photos/' + pics[i].owner + '/' + pics[i].id
       // info += "    <li><a href='http://www.flickr.com/photos/" + pics[i].owner + "/" + pics[i].id + "' target='_blank'> <img src='" + pics[i].url_t + "'/></a></li>\n";

@@ -11,7 +11,6 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     "&currencyCode=GBP"+
     "&city="+city+
     "&countryCode="+ccode+
-	"&stateProvinceCode=''"+
     "&supplierCacheTolerance=MED_ENHANCED"+
     "&arrivalDate=04/27/2013"+
     "&departureDate=04/31/2013"+
@@ -32,7 +31,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     for(var i =0; i<maxIter; i++ ) { 
  
       // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
-      info += "    <li ><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>\n";
+      info += "    <li><img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\">"+ hotelSummary[i]["address1"] + "</li>\n";
     }
 
     document.getElementById("result").innerHTML = info;

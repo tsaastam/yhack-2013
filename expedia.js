@@ -59,7 +59,10 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
      document.getElementById('flickrH').innerHTML = "<h1> Flickr photos from "+ city +  "</h1>"
 
     for(var i =0; i<maxIter; i++ ) { 
-      info += "    <img  width=\"110px\" src='" + pics[i].url_t + "'/>";
+      //info += '    <div class="flickrContainer" style="background-image: url(\'' + pics[i].url_t.replace('_t','_q') +'\'); height: 200px; width: 200px; background-repeat:no-repeat; background-position:center center; background-size: 150px 150px; overlay: hidden; float:left;"> </div>​\n';
+      info += '    <div style="height: 200px; width: 200px; overlay: hidden; float:left;"><img src="' +  pics[i].url_t.replace('_t','_q') + '" style="width:150px;"></img> </div>​\n';
+      // for the actual url is enough: pics[i].url_t.replace("_t","")
+      //info += "    <img  width=\"110px\" src='" + pics[i].url_t + "'/>";
       // for the actual url is enough: pics[i].url_t.replace("_t","")
       // otherwise 'http://www.flickr.com/photos/' + pics[i].owner + '/' + pics[i].id
       // info += "    <li><a href='http://www.flickr.com/photos/" + pics[i].owner + "/" + pics[i].id + "' target='_blank'> <img src='" + pics[i].url_t + "'/></a></li>\n";

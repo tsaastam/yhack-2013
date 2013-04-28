@@ -36,7 +36,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     //"&arrivalDate=" +today +
     //"&departureDate="+ dATomorrow +
 
-    console.log(url);
+    //console.log(url);
 
     return url
     }
@@ -62,7 +62,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
 	//  info += "    "+ "<img  height=\"102\" width=\"42\" src=\""+  hotelSummary[i]["tripAdvisorRatingUrl"]   +"\" > </div>"+" </li>\n"
 	 info += "    "+ " </div>"+" </li>\n"
 	
-	  console.log(rating)
+	  //console.log(rating)
 
      // TODO: need to remove existing markers before adding these new ones
      // - not sure how to remove them so just commenting this out for now

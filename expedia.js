@@ -2,7 +2,25 @@
 var foo = null
 
 YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
+
+  function writeDate(len) {
+    var d = new Date();
+    
+    if (len != 0) {
+      d.setDate( d.getDate() + len);
+    }
+
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1; //Months are zero based
+    var curr_year = d.getFullYear();
+
+    return curr_date + "/" + curr_month + "/" + curr_year;
+  }
+
   function getExpediaUrl(city, ccode) {
+    var today = writeDate(0);
+    var dATomorrow = writeDate(3);
+
     var url =
     "http://api.ean.com/ean-services/rs/hotel/v3/list?minorRev=22"+
     "&cid=55505"+
@@ -12,13 +30,17 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     "&city="+city+
     "&countryCode="+ccode+
     "&supplierCacheTolerance=MED_ENHANCED"+
-    "&arrivalDate=04/28/2013"+
-    "&departureDate=04/31/2013"+
     "&room1=2"+
     "&numberOfResults=6"+
     "&callback={callback}";
+    //"&arrivalDate=" +today +
+    //"&departureDate="+ dATomorrow +
+
+    console.log(url);
+
     return url
     }
+   
   
   function getHotelInfo(resp) {
     //console.log(resp);
@@ -28,7 +50,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
     var hotelSummary = resp["HotelListResponse"]["HotelList"]["HotelSummary"];
     var maxIter = hotelSummary.length;
 
-    for(var i =0; i<maxIter; i++ ) { 
+    for(var i =0; i<Math.min(maxIter,6); i++ ) { 
  
 	  var rating = String(hotelSummary[i]["tripAdvisorRating"]).replace(".", "");
 	 
@@ -67,7 +89,12 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
 
   function setFlickrData(res,city) {
     //console.log(res);
-    var pics = res.query.results.photo;
+    try {
+      var pics = res.query.results.photo;
+    } catch (e) {
+      pics = [];
+    }
+    
     var maxIter = pics.length;
     var info = '<div class=\"span12,offset1\">';
      document.getElementById('flickrH').innerHTML = "<h1> Flickr photos from "+ city +  "</h1>"

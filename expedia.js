@@ -35,7 +35,7 @@ YUI().use('jsonp', 'jsonp-url', 'yql', 'yql-jsonp', function (Y) {
      var infoLink = "<a target=\"new\" href=\""+ hotelSummary[i]["deepLink"] + "\">"
  
       // info += "<div title=\"\" data-original-title=\"\" class=\"span4\">"+ hotelSummary[i]["address1"]+ "</div>";
-      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><span class=\"rating-static rating-" + rating + "\"></span>" + infoLink + "<h5>"+ hotelSummary[i]["name"] +"</h5></a> " + infoLink + "<img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"> </a> <br/><br/></div>"+ hotelSummary[i]["locationDescription"];
+      info += "    <li> <div style=\"padding: 20px;\" ><div align=\"center\"><span class=\"rating-static rating-" + rating + "\"></span>" + infoLink + hotelSummary[i]["name"] + "</a> " + infoLink + "<img src=\"http://media.expedia.com" + hotelSummary[i]["thumbNailUrl"] + "\"> </a> <br/><br/></div>"+ hotelSummary[i]["locationDescription"];
 	  info += "   ";
 	//  info += "    "+ "<img  height=\"102\" width=\"42\" src=\""+  hotelSummary[i]["tripAdvisorRatingUrl"]   +"\" > </div>"+" </li>\n"
 	 info += "    "+ " </div>"+" </li>\n"

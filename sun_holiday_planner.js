@@ -97,7 +97,7 @@ function codeAddress() {
     document.getElementById('resultF').innerHTML = " ";
     //console.log(document.getElementById('resultF'));
 
-    window.scrollTo(-100, -100);
+    //window.scrollTo(-100, -100);
   });
 }
 
@@ -111,23 +111,28 @@ function manageWeatherClick(smallPopup) {
   var hotelsH = document.getElementById('hotelsH');
   var flickrH = document.getElementById('flickrH');
  
-  weatherH.innerHTML = " <h1>Forecast</h1> ";
-  hotelsH.innerHTML = " <h1>Hotels by Expedia</h1> ";
-  flickrH.innerHTML = " <h1>Loading...</h1> "
-  document.getElementById('resultF').innerHTML = " ";
-
   //window.location.href = '#weatherH';
-  window.scrollTo(250, 250);
+  //window.scrollTo(250, 250);
 
   // Then collect location and country name!
   var locationName = smallPopup.featureDetails.location.split(',')[0].trim();
   var countryName = smallPopup.featureDetails.location.split(',')[1].trim();
 
+  weatherH.innerHTML = " <h1>Informations for "+ locationName + "</h1> ";
+  hotelsH.innerHTML = " <h1>Hotels by Expedia</h1> ";
+  flickrH.innerHTML = " <h1>Loading...</h1> "
+  document.getElementById('resultF').innerHTML = " ";
+
+
   // We shall do something with this
   //alert(locationName + " -> " + countryName);
   foo(locationName, countryName);
   flickrData(locationName, countryName);
-  
+
+  jQuery(function($){
+      // your jQuery code here, using the $
+      $('#test_modal').modal('show');
+   });
 
 }
 

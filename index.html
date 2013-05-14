@@ -1,113 +1,134 @@
 <!DOCTYPE html>
 <html>
-    <head>
-       <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-  
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <meta charset="utf-8">
-            <title>Sunny Rooms</title>
-            <LINK href="sun_holiday_planner.css" rel="stylesheet" type="text/css">
-         <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false&libraries=weather&language=en-GB"></script>
-            <script src="http://yui.yahooapis.com/3.10.0/build/yui/yui-min.js"></script>
-            <script src="sun_holiday_planner.js"></script>
-                <script src="expedia.js"></script>
-                 <style type="text/css">
-  #map-canvas img {
-  max-width: none;
-}
+<head>
 
- </style>
-        </head>
-      <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <style type="text/css">
+     #map-canvas img {
+      max-width: none;
+    }
+
+    .containter div {
+      margin-top: 50px;
+    }
+
+    .modal { 
+      width: 1280px;
+      max-width: 1300px;
+      margin-left: -610px;
+
+      height: 680px;
+      max-height: 800px;
+    }
+
+    .modal-body {max-height: 550px;}
+  </style>
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js" />
+  <script>  var $ = jQuery.noConflict();</script>
+  <script src="js/bootstrap.js"></script> 
+
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.6&sensor=false&libraries=weather&language=en-GB"></script>
+
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+  <meta charset="utf-8"/>
+  <title>Sunny Rooms</title>
+  <LINK href="sun_holiday_planner.css" rel="stylesheet" type="text/css"/>
+
+         
+  <script src="sun_holiday_planner.js"></script>
+  <script src="expedia.js"></script>
+
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
 
-  
-    <div class="navbar navbar-inverse navbar-fixed-top" id='top-page'>
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Sunny Rooms</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-                <li class="divider"></li>
-            </ul>
-         <form class="navbar-search pull-left" action="">
-                      <input id="address" class="search-query span2"
-                             placeholder="London, United Kingdom" type="text"
-                             onKeyPress="return maybeSubmit(event);">
-                        <input type="button" value="Search" onclick="codeAddress()">
-                    </form>
-          </div><!--/.nav-collapse -->
-        </div>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" id='top-page'>
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">Sunny Rooms</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="divider"></li>
+          </ul>
+          <form class="navbar-search pull-left" action="">
+            <input id="address" class="search-query span2"
+            placeholder="London, United Kingdom" type="text"
+            onKeyPress="return maybeSubmit(event);">
+            <input type="button" value="Search" onclick="codeAddress()">
+          </form>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
+  </div>
 
-    <div class="container">
-    
-    
-     <div  class="offset1 span10">   <img src="SunSquiggle.png" width="100px" style="float:left;" >   <h1 style="float:right;">Yahoo! Hacker London - Sunny Rooms</h1>
-      <p style="float:right;">Book yourself some last minute sun..</p>
-      </div>
+  <div class="container">
+
+
+   <div  class="offset1 span10">   <img src="SunSquiggle.png" width="100px" style="float:left;" >   <h1 style="float:right;">Yahoo! Hacker London - Sunny Rooms</h1>
+    <p style="float:right;">Book yourself some last minute sun..</p>
+  </div>
          <!--  <div id="panel"  style="   padding-top: 60px;"  >
          <input id="address" type="textbox" value="London, UK">
             <input type="button" value="Search" onclick="codeAddress()"> 
         </div>
-        -->
-        
-        
-        <div id="map-canvas" style="width:100%; height:480px"></div>
-    
-    
-     <div class="row">
-       <div class="span2">
-      		 		 <div class="row">
-        			 				  <div id='weatherH'   class=" span2">     <h1 id="textWE" style="visibility:hidden;">The Weather</h1>  </div>
-      
-        			 </div>
-       
-        			 <div class="row">
-	        			 			<div  class=" span2">  <div id="meteo-forecast" style="width:100%; height:150px"></div>
-	        		</div>
-	        	</div>
-      </div>
-      <div class="offset4" >
-            <div class="span8" >
-        		  <div class="row">
-          		      <div id='hotelsH'	 >     <h1 id="textHO" style="visibility:hidden;">The Hotels</h1> </div>
-          		 </div>
-       
-       
-                  <div class="row">
-      	                 <div  >
-        	                <div id="resulto" class="row show-grid" style="width:100%; "><ul class="gallery" id="result"> </ul> </div>
-        	             </div>
-                  </div>
-                </div>  
-                  </div>
-         </div>	
-            </div>	
-        
-        <div class="row">
-           <div id='flickrH'  class="offset2 span10">     <h1 id="textFL" style="visibility:hidden;">Related Pictures from Flickr</h1></div></div>
-       <div class="row">
-       
-       <div  class="offset2 span10">
-        <div id="resultFo" class="row show-grid" style="width:100%; height:500px"><ul class="gallery" id="resultF">
-        </ul> </div> </div>
-        </div>
-         </div>
-         
-         
+      -->
 
-    
-         
-    </body>
+
+      <div id="map-canvas" style="width:100%; height:480px"></div>
+
+
+      <div class="modal hide fade" id="test_modal">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal">&times;</a>
+          <div id='weatherH'>     <h1 id="textWE" style="visibility:hidden;">The Weather</h1></div>
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="span2">
+              <div class="row">
+                <div  class=" span2">  <div id="meteo-forecast" style="width:100%; height:150px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="offset4" >
+            <div class="span8" >
+              <div class="row">
+                <div id='hotelsH'>  <h1 id="textHO" style="visibility:hidden;">The Hotels</h1> </div>
+              </div>
+              <div class="row">
+               <div id="resulto" class="row show-grid" style="width:100%; "><ul class="gallery" id="result"> </ul> </div>
+             </div>
+           </div>  
+         </div>
+
+
+         <div class="row">
+           <div id='flickrH'  class="offset2 span10">     <h1 id="textFL" style="visibility:hidden;">Related Pictures from Flickr</h1></div></div>
+           <div class="row">
+
+             <div  class="offset2 span10">
+              <div id="resultFo" class="row show-grid" style="width:100%; height:500px"><ul class="gallery" id="resultF">
+              </ul> </div> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
 </html>
